@@ -1,0 +1,54 @@
+<mat-toolbar>
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+       menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+        close
+     </mat-icon>
+</button>
+    <span>My App</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav="matSidenav" mode="side" opened>
+       <img class="avatar mat-elevation-z12" src="../assets/img/fotoPerfil.jpg" alt="img">
+       <h4 class="name">Marcelo Feliziani</h4>
+       <p class="designation">Web Developer</p>
+
+       <mat-divider></mat-divider>
+
+       <button mat-button class="menu-button">
+        <mat-icon>person</mat-icon>  
+        <span><a [routerLink]="['student/studentCreate']">Crear</a></span> 
+        <!-- router link declarado e importado en el oages module como routerModule -->
+       </button>
+
+       <button mat-button class="menu-button">
+        <mat-icon>person</mat-icon>  
+        <span><a [routerLink]="['student/students']">List</a></span>
+       </button>
+
+       <button mat-button class="menu-button">
+        <mat-icon>person</mat-icon>  
+        <span><a [routerLink]="['student/studentDetail']">Person</a></span>
+       </button>
+
+       <mat-divider></mat-divider>
+
+       <button mat-button class="menu-button">
+        <mat-icon>logout</mat-icon>  
+        <span><a [routerLink]="['/']">Logout</a></span>
+       </button> 
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <div class="content mat-elevation-z12">
+        <router-outlet></router-outlet>
+      </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
